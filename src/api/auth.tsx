@@ -7,3 +7,10 @@ export async function signup(req: object) {
     data: req,
   });
 }
+
+export async function login() {
+  return request.authCall({
+    url: '/login',
+    method: 'GET',
+  });
+}
