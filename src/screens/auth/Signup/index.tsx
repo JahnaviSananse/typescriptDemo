@@ -9,8 +9,11 @@ import {
 } from 'react-native';
 import TextField from '../../../components/TextField';
 import styles from './style';
+import Button from '../../../components/Button';
+import { connect } from 'react-redux';
+import { SignUp } from '../../../redux/actions/auth';
 
-const Login = () => {
+const Login = (props : any) => {
   const navigation = useNavigation();
 
   return(
@@ -47,11 +50,13 @@ const Login = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.signinButton}>
-        <TouchableOpacity onPress={()=>navigation.navigate("Login")}>
-          <Text style={styles.signinText}> SIGN IN </Text>
-        </TouchableOpacity>
-      </View>
+      <Button
+          type="fill"
+          title=" SIGN IN"
+          onPress={() => {
+            navigation.navigate('Login');
+          }}
+        />
     </View>
     </SafeAreaView>
   )
@@ -59,4 +64,6 @@ const Login = () => {
 
 
 
-export default Login;
+export default connect(null,{
+  SignUp,
+})(Login);

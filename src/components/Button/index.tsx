@@ -13,7 +13,7 @@ const Button = (props: IButtonProps) => {
   const {title, onPress, type} = props;
   let btnStyle =
     type === 'fill'
-      ? [styles.fillButton, {backgroundColor: THEME.BLACK}]
+      ? [styles.fillButton, {backgroundColor: THEME.GREEN}]
       : [styles.unfillButton, {borderColor: THEME.GREEN}];
   let textStyle =
     type === 'fill'

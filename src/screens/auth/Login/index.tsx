@@ -9,8 +9,12 @@ import {
 } from 'react-native';
 import TextField from '../../../components/TextField';
 import styles from './style';
+import { useNavigation } from '@react-navigation/native';
+import Button from '../../../components/Button';
 
 const Login = () => {
+  const navigation = useNavigation();
+
   return(
       <SafeAreaView  style={styles.container}>
       <View>
@@ -43,11 +47,18 @@ const Login = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.signinButton}>
-        <TouchableOpacity onPress={()=>alert("pressed")}>
+      {/* <View style={styles.signinButton}>
+      <TouchableOpacity onPress={()=>navigation.navigate("Choice")}>
           <Text style={styles.signinText}> SIGN IN </Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
+      <Button
+          type="fill"
+          title="LOG IN"
+          onPress={() => {
+            navigation.navigate('Choice');
+          }}
+        />
     </View>
     </SafeAreaView>
   )
