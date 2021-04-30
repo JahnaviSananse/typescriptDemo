@@ -6,7 +6,7 @@ import styles from './style';
 interface IButtonProps {
   title: string;
   onPress: any;
-  type: string;
+  type?: string;
 }
 
 const Button = (props: IButtonProps) => {

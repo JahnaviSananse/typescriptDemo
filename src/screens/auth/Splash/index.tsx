@@ -1,12 +1,7 @@
-import React,{useEffect}  from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, {useEffect} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
-import {
-  SafeAreaView,
-
-  Image,
-
-} from 'react-native';
+import {SafeAreaView, Image} from 'react-native';
 import styles from '../Splash/style';
 const Splash = () => {
   const navigation = useNavigation();

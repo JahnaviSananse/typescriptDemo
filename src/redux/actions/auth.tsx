@@ -33,15 +33,35 @@ export const SignUp = (request: any) => async (
   }
 };
 
-export const LogIn = () => async (dispatch: Dispatch, store: IReduxState) => {
+export const LogIn = (request: any) => async (
+  dispatch: Dispatch,
+  store: IReduxState,
+) => {
   try {
     dispatch({type: LOGIN_DATA.LOGIN_START});
     const data = await API.login();
     if (data) {
-      dispatch({
-        type: LOGIN_DATA.LOGIN_SUCCESS,
-        payload: data,
+      console.log('data =======>>>>', data);
+      const filterData = data.filter((value: any) => {
+        console.log('Value =======>>>>', value);
+        return (
+          value.email === request.email && value.password === request.password
+        );
       });
+      console.log('filterData', filterData);
+      if (filterData.length >= 1) {
+        dispatch({
+          type: LOGIN_DATA.LOGIN_SUCCESS,
+          payload: filterData,
+        });
+        request.props.navigation.navigate('Choice');
+      } else {
+        console.log('In ELSE Part');
+        alert('INVALID DATA');
+        dispatch({
+          type: LOGIN_DATA.LOGIN_STOP,
+        });
+      }
     }
   } catch (error) {
     dispatch({

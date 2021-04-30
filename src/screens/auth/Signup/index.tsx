@@ -7,7 +7,11 @@ import Button from '../../../components/Button';
 import {connect} from 'react-redux';
 import {SignUp} from '../../../redux/actions/auth';
 
-const Login = (props: any) => {
+interface ISignupProps {
+  SignUp: Function;
+}
+
+const Login = (props: ISignupProps) => {
   const navigation = useNavigation();
   const [name, setName] = useState<string>();
   const [email, setEmail] = useState<any>();

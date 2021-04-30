@@ -3,7 +3,7 @@ import {Text, TextInput, View} from 'react-native';
 import styles from '../TextField/style';
 
 interface ITextFieldProps {
-  value: string;
+  value?: string;
   placeholder: string;
   title: string;
   change: any;

@@ -1,8 +1,10 @@
-import {SIGNUP_DATA} from '../types/auth';
-import {LOGIN_DATA} from './../types/auth';
+import {LoadPost, ItemPost} from '../types/post';
+
 const initial_state = {
+  dataRespones: null,
+  PostResponse: null,
   isLoading: false,
-  loginData: null,
+  error: {},
 };
 
 export default (
@@ -10,35 +12,32 @@ export default (
   action: IReduxAction,
 ): typeof initial_state => {
   switch (action.type) {
-    case SIGNUP_DATA.SIGNUP_START:
-    case LOGIN_DATA.LOGIN_START: {
+    case LoadPost.LOADPOST_START:
+    case ItemPost.ITEMPOST_START:
       return {
         ...state,
         isLoading: true,
       };
-    }
-    case SIGNUP_DATA.SIGNUP_SUCCESS: {
+    case LoadPost.LOADPOST_SUCCESS:
       return {
         ...state,
+        dataRespones: action.payload,
         isLoading: false,
       };
-    }
-    case LOGIN_DATA.LOGIN_SUCCESS: {
+    case ItemPost.ITEMPOST_SUCCESS:
       return {
         ...state,
+        PostResponse: [...state.PostResponse, action.payload],
         isLoading: false,
-        loginData: action.payload,
       };
-    }
-    case SIGNUP_DATA.SIGNUP_STOP:
-    case LOGIN_DATA.LOGIN_STOP: {
+    case LoadPost.LOADPOST_FAIL:
+    case ItemPost.ITEMPOST_FAIL:
       return {
         ...state,
+        error: action.payload,
         isLoading: false,
       };
-    }
-    default: {
+    default:
       return state;
-    }
   }
 };

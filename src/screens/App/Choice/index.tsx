@@ -1,15 +1,12 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
-import {
-  SafeAreaView,
-  View,
-} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import styles from './style';
 import Button from '../../../components/Button/index';
 
 const Choice = () => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView>
@@ -20,11 +17,17 @@ const Choice = () => {
             navigation.navigate('Home');
           }}
         />
-    
+        <Button
+          title=" Post Data"
+          onPress={() => {
+            navigation.navigate('Post');
+          }}
+        />
+
         <Button
           title="LOG OUT"
           onPress={() => {
-           navigation.navigate('Login');
+            navigation.navigate('Login');
           }}
         />
       </View>
